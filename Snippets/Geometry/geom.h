@@ -38,17 +38,10 @@ inline namespace geometry {
     pt &operator/=(pt &l, const T &r) { return l = l / r; }
     
     pt unit(const pt& p) { return p / len(p); }
-}
-
-inline namespace ToString {
-    string ts(pt p) {
-        stringstream ss; ss << fixed << setprecision(15) << p.x << ' ' << p.y;
-        return ss.str();
-    }
-}
-
-inline namespace Input {
-    void re(pt &p) {
-        cin >> p.x >> p.y;
-    }
+    
+    istream& operator>>(istream &is, pt &p) {
+        is >> p.x >> p.y; return is; }
+    
+    ostream& operator<<(ostream &os, const pt &p) {
+        os << p.x << ' ' << p.y; return os; }
 }
